@@ -7,7 +7,7 @@
           <form class="ml-10">
             <v-text-field label="Username"></v-text-field>
             <v-text-field label="Password" type="password"></v-text-field>
-            <v-btn to="/">Submit</v-btn>
+            <v-btn :to="dashboard">Submit</v-btn>
           </form>
         </v-card>
       </v-col>
@@ -18,7 +18,9 @@
 export default {
   name: 'login',
   data() {
-    return {}
+    return {
+      dashboard: '/home'
+    }
   }
 }
 </script>

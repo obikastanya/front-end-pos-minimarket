@@ -12,16 +12,18 @@
       </v-list>
     </v-navigation-drawer>
     <v-sheet>
-      <h2>hello world</h2>
+      <input-stock></input-stock>
     </v-sheet>
   </v-card>
 </template>
 
 <script>
 import NavbarItem from './NavbarItem.vue'
+import inputStock from './Barang/InputStock.vue'
 export default {
   components: {
-    NavbarItem
+    NavbarItem,
+    inputStock
   },
   data: () => ({
     drawer: false,
@@ -30,10 +32,26 @@ export default {
         title: 'Dashboard',
         icon: 'mdi-home'
       },
-      { title: 'Barang', icon: 'mdi-database-edit' },
-      { title: 'Transaksi', icon: 'mdi-cart-plus' },
-      { title: 'Suplier', icon: 'mdi-car-pickup' },
-      { title: 'Pegawai', icon: 'mdi-account-details-outline' }
+      {
+        title: 'Barang',
+        icon: 'mdi-database-edit',
+        crudMenu: ['Input Stock Baru', 'Cek Stock']
+      },
+      {
+        title: 'Transaksi',
+        icon: 'mdi-cart-plus',
+        crudMenu: ['Kasir', 'Lihat Transaksi']
+      },
+      {
+        title: 'Suplier',
+        icon: 'mdi-car-pickup',
+        crudMenu: ['Input Suplier', 'Lihat Suplier']
+      },
+      {
+        title: 'Pegawai',
+        icon: 'mdi-account-details-outline',
+        crudMenu: ['Input  Pegawai', 'Lihat Pegawai']
+      }
     ]
   })
 }
