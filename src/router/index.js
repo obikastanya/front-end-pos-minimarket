@@ -1,19 +1,15 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 import InputStock from '../components/Barang/InputStock.vue'
+import CekStock from '../components/Barang/CekStock.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
-    {
-        path: '/home',
-        name: 'Home',
-        component: Home
-    },
     { path: '/', name: 'login', component: Login },
-    { path: '/input-stock', name: 'inputStock', component: InputStock }
+    { path: '/input-stock', name: 'inputStock', component: InputStock },
+    { path: '/cek-stock', name: 'cekStock', component: CekStock }
 ]
 
 const router = new VueRouter({

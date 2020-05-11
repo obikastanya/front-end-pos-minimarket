@@ -14,7 +14,8 @@
       class="ml-10"
       v-for="(crudmenu, index) in menus.crudMenu"
       v-bind:key="index"
-    >{{ crudmenu }}</v-list-item>
+      :to="crudmenu.routeMenu"
+    >{{ crudmenu.namaMenu }}</v-list-item>
   </v-list-group>
 </template>
 <script>

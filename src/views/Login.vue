@@ -19,7 +19,7 @@ export default {
   name: 'login',
   data() {
     return {
-      dashboard: '/home'
+      dashboard: '/input-stock'
     }
   }
 }

@@ -3,16 +3,18 @@
     <v-row align="center" justify="center">
       <v-col cols="12" lg="9">
         <v-row>
-          <v-col class="orange darken-3" justify="end" align="right">
+          <v-col class="orange darken-3 mx-3 rounded" justify="end" align="right">
             <v-btn
               v-for="(buttontext, index) in buttonText"
               :key="index"
+              elevation="5"
+              :color="buttontext.color"
               class="mx-5"
-            >{{ buttontext }}</v-btn>
+            >{{ buttontext.btnName }}</v-btn>
           </v-col>
         </v-row>
         <v-row>
-          <v-col class="pink lighten-3">
+          <v-col>
             <v-card class="pa-10">
               <h1 class="ml-5">Input Data Barang</h1>
               <form class="mx-5">
@@ -34,12 +36,17 @@
 export default {
   data() {
     return {
-      buttonText: {
-        submit: 'Submit',
-        clear: 'Clear',
-        back: 'Back'
-      }
+      buttonText: [
+        { btnName: 'Submit', color: 'success' },
+        { btnName: 'Clear', color: 'error' },
+        { btnName: 'Back', color: 'primary' }
+      ]
     }
   }
 }
 </script>
+<style scoped>
+.rounded {
+  border-radius: 5px;
+}
+</style>

@@ -12,18 +12,16 @@
       </v-list>
     </v-navigation-drawer>
     <v-sheet>
-      <input-stock></input-stock>
+      <router-view></router-view>
     </v-sheet>
   </v-card>
 </template>
 
 <script>
 import NavbarItem from './NavbarItem.vue'
-import inputStock from './Barang/InputStock.vue'
 export default {
   components: {
-    NavbarItem,
-    inputStock
+    NavbarItem
   },
   data: () => ({
     drawer: false,
@@ -35,22 +33,34 @@ export default {
       {
         title: 'Barang',
         icon: 'mdi-database-edit',
-        crudMenu: ['Input Stock Baru', 'Cek Stock']
+        crudMenu: [
+          { namaMenu: 'Input Stock Baru', routeMenu: '/input-stock' },
+          { namaMenu: 'Cek Stock', routeMenu: '/cek-stock' }
+        ]
       },
       {
         title: 'Transaksi',
         icon: 'mdi-cart-plus',
-        crudMenu: ['Kasir', 'Lihat Transaksi']
+        crudMenu: [
+          { namaMenu: 'Kasir', routeMenu: '/' },
+          { namaMenu: 'Lihat Transaksi', routeMenu: '/' }
+        ]
       },
       {
         title: 'Suplier',
         icon: 'mdi-car-pickup',
-        crudMenu: ['Input Suplier', 'Lihat Suplier']
+        crudMenu: [
+          { namaMenu: 'Input Suplier', routeMenu: '/' },
+          { namaMenu: 'Lihat Suplier', routeMenu: '/' }
+        ]
       },
       {
         title: 'Pegawai',
         icon: 'mdi-account-details-outline',
-        crudMenu: ['Input  Pegawai', 'Lihat Pegawai']
+        crudMenu: [
+          { namaMenu: 'Input  Pegawai', routeMenu: '/' },
+          { namaMenu: 'Lihat Pegawai', routeMenu: '/' }
+        ]
       }
     ]
   })
