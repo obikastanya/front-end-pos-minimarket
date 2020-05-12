@@ -15,7 +15,7 @@
         </v-row>
         <v-row>
           <v-col>
-            <v-card class="pa-10">
+            <v-card class="pa-10" elevation="5">
               <h1 class="ml-5">Input Data Barang</h1>
               <form class="mx-5">
                 <v-select label="Jenis Barang"></v-select>

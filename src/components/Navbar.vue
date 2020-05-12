@@ -11,7 +11,7 @@
         </v-list-item-group>
       </v-list>
     </v-navigation-drawer>
-    <v-sheet>
+    <v-sheet class="mb-3">
       <router-view></router-view>
     </v-sheet>
   </v-card>
