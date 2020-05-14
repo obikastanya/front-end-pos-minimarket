@@ -1,10 +1,10 @@
 <template>
   <v-container fluid class="mx-10">
     <v-row>
-      <v-col md="7">
+      <v-col md="6">
         <v-row>
           <v-col class="orange darken-3">
-            <h1 class="white--text font-weight-regular">Hitung Belanjaan</h1>
+            <h1 class="white--text font-weight-regular">Detail Transaksi</h1>
           </v-col>
         </v-row>
         <v-row class="rightMargin">
@@ -16,13 +16,13 @@
             <v-text-field label="Bayar"></v-text-field>
             <v-text-field label="Kembalian"></v-text-field>
             <span class="d-flex justify-end">
-              <v-btn class="success mx-10">Simpan</v-btn>
-              <v-btn class="primary">Hitung</v-btn>
+              <v-btn class="warning mx-10">Edit</v-btn>
+              <v-btn class="error">Cancel</v-btn>
             </span>
           </v-col>
         </v-row>
       </v-col>
-      <v-col md="4 mx-10">
+      <v-col md="5" class="mx-10">
         <v-col class="orange darken-3">
           <h1 class="white--text font-weight-regular">Cart</h1>
         </v-col>
@@ -35,6 +35,7 @@
                 <th>Jumlah</th>
                 <th>Harga</th>
                 <th>Subtotal</th>
+                <th>Action</th>
               </tr>
             </thead>
             <tbody>
@@ -44,13 +45,15 @@
                 <td>{{ cart.jumlahItem }}</td>
                 <td>{{ cart.hargaItem }}</td>
                 <td>{{ cart.jumlahItem * cart.hargaItem }}</td>
+                <td>
+                  <v-icon color="error">mdi-close-box</v-icon>
+                </td>
               </tr>
             </tbody>
           </v-simple-table>
         </v-col>
         <v-col>
           <h2 class="d-inline">Total: {{ total }}</h2>
-          <v-btn class="d-inline error float-right">Cetak Nota</v-btn>
         </v-col>
       </v-col>
     </v-row>
@@ -66,7 +69,7 @@
 export default {
   data() {
     return {
-      item: ['Buku Gambar', 'Pulpen Standard', 'Cat', 'Phillip LED', 'Oreo'],
+      item: [],
       total: 0,
       carts: [
         {
@@ -91,14 +94,6 @@ export default {
         }
       ]
     }
-  },
-  computed: {
-    //   hargaTotal: function() {
-    //     for (cart in this.carts) {
-    //       total += cart.jumlahItem * cart.hargaItem
-    //     }
-    //     return this.total
-    //   }
   }
 }
 </script>

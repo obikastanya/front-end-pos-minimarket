@@ -42,8 +42,8 @@ export default {
         title: 'Transaksi',
         icon: 'mdi-cart-plus',
         crudMenu: [
-          { namaMenu: 'Kasir', routeMenu: '/' },
-          { namaMenu: 'Lihat Transaksi', routeMenu: '/' }
+          { namaMenu: 'Kasir', routeMenu: '/kasir' },
+          { namaMenu: 'Lihat Transaksi', routeMenu: '/lihat-transaksi' }
         ]
       },
       {
