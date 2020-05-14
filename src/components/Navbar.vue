@@ -50,16 +50,16 @@ export default {
         title: 'Suplier',
         icon: 'mdi-car-pickup',
         crudMenu: [
-          { namaMenu: 'Input Suplier', routeMenu: '/' },
-          { namaMenu: 'Lihat Suplier', routeMenu: '/' }
+          { namaMenu: 'Input Suplier', routeMenu: '/input-supplier' },
+          { namaMenu: 'Lihat Suplier', routeMenu: '/lihat-supplier' }
         ]
       },
       {
         title: 'Pegawai',
         icon: 'mdi-account-details-outline',
         crudMenu: [
-          { namaMenu: 'Input  Pegawai', routeMenu: '/' },
-          { namaMenu: 'Lihat Pegawai', routeMenu: '/' }
+          { namaMenu: 'Input  Pegawai', routeMenu: '/input-pegawai' },
+          { namaMenu: 'Lihat Pegawai', routeMenu: '/lihat-pegawai' }
         ]
       }
     ]

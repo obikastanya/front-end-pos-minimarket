@@ -31,7 +31,7 @@
               <v-btn class="warning" :to="route.detailTransaksi">Edit</v-btn>
             </td>
             <td class="action">
-              <v-btn class="error">Delete</v-btn>
+              <v-btn class="error">Hapus</v-btn>
             </td>
             <td class="action">
               <v-btn class="info">Detail</v-btn>
@@ -56,6 +56,7 @@
 export default {
   data: () => ({
     route: { detailTransaksi: '/detail-transaksi' },
+    deleteTransaksi: false,
     page: 10,
     length: 15,
     totalVisible: 7,

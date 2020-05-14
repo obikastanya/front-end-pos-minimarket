@@ -6,6 +6,10 @@ import CekStock from '../components/Barang/CekStock.vue'
 import Kasir from '../components/Transaksi/Kasir.vue'
 import LihatTransaksi from '../components/Transaksi/LihatTransaksi.vue'
 import DetailTransaksi from '../components/Transaksi/DetailTransaksi.vue'
+import InputSupplier from '../components/Supplier/InputSupplier.vue'
+import LihatSupplier from '../components/Supplier/LihatSupplier.vue'
+import InputPegawai from '../components/Pegawai/InputPegawai.vue'
+import LihatPegawai from '../components/Pegawai/LihatPegawai.vue'
 
 Vue.use(VueRouter)
 
@@ -23,7 +27,11 @@ const routes = [
         path: '/detail-transaksi',
         name: 'detailTransaksi',
         component: DetailTransaksi
-    }
+    },
+    { path: '/input-supplier', name: 'inputSupplier', component: InputSupplier },
+    { path: '/lihat-supplier', name: 'lihatSupplier', component: LihatSupplier },
+    { path: '/input-pegawai', name: 'inputPegawai', component: InputPegawai },
+    { path: '/lihat-pegawai', name: 'lihatPegawai', component: LihatPegawai }
 ]
 
 const router = new VueRouter({
