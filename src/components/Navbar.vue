@@ -39,6 +39,14 @@ export default {
         ]
       },
       {
+        title: 'Jenis',
+        icon: 'mdi-account-details-outline',
+        crudMenu: [
+          { namaMenu: 'Input Jenis', routeMenu: '/input-jenis-barang' },
+          { namaMenu: 'Lihat Jenis', routeMenu: '/lihat-jenis-barang' }
+        ]
+      },
+      {
         title: 'Transaksi',
         icon: 'mdi-cart-plus',
         crudMenu: [

@@ -10,6 +10,8 @@ import InputSupplier from '../components/Supplier/InputSupplier.vue'
 import LihatSupplier from '../components/Supplier/LihatSupplier.vue'
 import InputPegawai from '../components/Pegawai/InputPegawai.vue'
 import LihatPegawai from '../components/Pegawai/LihatPegawai.vue'
+import InputJenis from '../components/Jenis/InputJenis.vue'
+import LihatJenis from '../components/Jenis/LihatJenis.vue'
 
 Vue.use(VueRouter)
 
@@ -31,7 +33,13 @@ const routes = [
     { path: '/input-supplier', name: 'inputSupplier', component: InputSupplier },
     { path: '/lihat-supplier', name: 'lihatSupplier', component: LihatSupplier },
     { path: '/input-pegawai', name: 'inputPegawai', component: InputPegawai },
-    { path: '/lihat-pegawai', name: 'lihatPegawai', component: LihatPegawai }
+    { path: '/lihat-pegawai', name: 'lihatPegawai', component: LihatPegawai },
+    { path: '/input-jenis-barang', name: 'inputJenis', component: InputJenis },
+    {
+        path: '/lihat-jenis-barang',
+        name: 'lihatJenisBarang',
+        component: LihatJenis
+    }
 ]
 
 const router = new VueRouter({
