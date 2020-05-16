@@ -21,11 +21,11 @@
         <tbody>
           <tr v-for="(item, index) in barang" :key="index">
             <td>{{ index + 1 }}</td>
-            <td>{{ item.namaBarang }}</td>
-            <td class="text-center">{{ item.jenisBarang }}</td>
-            <td>{{ item.suplier }}</td>
-            <td class="text-right">{{ item.hargaBeli }}</td>
-            <td class="text-right">{{ item.hargaJual }}</td>
+            <td>{{ item.nama_barang }}</td>
+            <td class="text-center">{{ item.id_jenis_barang }}</td>
+            <td>{{ item.id_supplier }}</td>
+            <td class="text-right">{{ item.harga_beli }}</td>
+            <td class="text-right">{{ item.harga_jual }}</td>
             <td class="text-right">{{ item.stock }}</td>
             <td class="action">
               <v-btn class="warning" :to="route.inputStock">Edit</v-btn>
@@ -53,55 +53,26 @@
   </v-container>
 </template>
 <script>
+import axios from 'axios'
 export default {
   data: () => ({
     route: { inputStock: '/input-stock' },
     page: 10,
     length: 15,
     totalVisible: 7,
-    barang: [
-      {
-        namaBarang: 'Pulpen Standard',
-        jenisBarang: 'ATK',
-        suplier: 'Sinar Mas Cbg. Salatiga',
-        hargaBeli: 1000,
-        hargaJual: 1500,
-        stock: 200
-      },
-      {
-        namaBarang: 'Pencil Faber Castle',
-        jenisBarang: 'ATK',
-        suplier: 'Sinar Mas Cbg. Salatiga',
-        hargaBeli: 1000,
-        hargaJual: 1500,
-        stock: 200
-      },
-      {
-        namaBarang: 'Lampu LED',
-        jenisBarang: 'Alat Listrik',
-        suplier: 'Phillip',
-        hargaBeli: 20000,
-        hargaJual: 25000,
-        stock: 50
-      },
-      {
-        namaBarang: 'Cat Tembok',
-        jenisBarang: 'Cat Bangunan',
-        suplier: 'Nippon Paint',
-        hargaBeli: 46000,
-        hargaJual: 55000,
-        stock: 80
-      },
-      {
-        namaBarang: 'Kertas',
-        jenisBarang: 'ATK',
-        suplier: 'Sinar Mas Cbg. Salatiga',
-        hargaBeli: 100,
-        hargaJual: 200,
-        stock: 3000
-      }
-    ]
-  })
+    barang: []
+  }),
+  mounted() {
+    axios
+      .get('http://localhost:8003/get-barang')
+      .then(response => {
+        this.barang = response.data
+        console.log(response.data)
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  }
 }
 </script>
 <style scoped>
