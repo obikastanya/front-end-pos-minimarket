@@ -16,7 +16,7 @@
         <tbody>
           <tr v-for="(item, index) in jenisBarang" :key="index">
             <td class="text-center">{{ index + 1 }}</td>
-            <td class="text-left">{{ item.jenisBarang }}</td>
+            <td class="text-left">{{ item.nama_jenis_barang }}</td>
             <td class="action">
               <v-btn class="warning" :to="route.inputJenis">Edit</v-btn>
             </td>
@@ -43,30 +43,24 @@
   </v-container>
 </template>
 <script>
+import Axios from 'axios'
 export default {
   data: () => ({
     route: { inputJenis: '/input-jenis-barang' },
     page: 10,
     length: 15,
     totalVisible: 7,
-    jenisBarang: [
-      {
-        jenisBarang: 'ATK'
-      },
-      {
-        jenisBarang: 'Alat Listrik'
-      },
-      {
-        jenisBarang: 'Pecah Belah'
-      },
-      {
-        jenisBarang: 'Cat Bangunan'
-      },
-      {
-        jenisBarang: 'Alat Bangunan'
-      }
-    ]
-  })
+    jenisBarang: []
+  }),
+  mounted() {
+    Axios.get('http://localhost:8003/get-jenis-barang')
+      .then(response => {
+        this.jenisBarang = response.data
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  }
 }
 </script>
 <style scoped>

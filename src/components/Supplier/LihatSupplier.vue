@@ -18,9 +18,9 @@
         <tbody>
           <tr v-for="(item, index) in supplier" :key="index">
             <td>{{ index + 1 }}</td>
-            <td>{{ item.namaSupplier }}</td>
+            <td>{{ item.nama_supplier }}</td>
             <td>{{ item.alamat }}</td>
-            <td class="text-right">{{ item.noTelp }}</td>
+            <td class="text-right">{{ item.no_telp }}</td>
             <td class="action">
               <v-btn class="warning" :to="route.inputSupplier">Edit</v-btn>
             </td>
@@ -47,35 +47,24 @@
   </v-container>
 </template>
 <script>
+import Axios from 'axios'
 export default {
   data: () => ({
     route: { inputSupplier: '/input-supplier' },
     page: 10,
     length: 15,
     totalVisible: 7,
-    supplier: [
-      {
-        namaSupplier: 'Obi Kastanya',
-        alamat: 'Tingkir, Salatiga',
-        noTelp: '089324224'
-      },
-      {
-        namaSupplier: 'Aaron Sanger',
-        alamat: 'Solo',
-        noTelp: '08782142'
-      },
-      {
-        namaSupplier: 'PT Tirta Jaya',
-        alamat: 'Klaseman V, Salatiga',
-        noTelp: '0893212'
-      },
-      {
-        namaSupplier: 'IndoFood',
-        alamat: 'Semarang',
-        noTelp: '089324326'
-      }
-    ]
-  })
+    supplier: []
+  }),
+  mounted() {
+    Axios.get('http://localhost:8003/get-supplier')
+      .then(response => {
+        this.supplier = response.data
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  }
 }
 </script>
 <style scoped>

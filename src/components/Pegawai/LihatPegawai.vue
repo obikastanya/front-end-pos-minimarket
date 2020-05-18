@@ -21,13 +21,13 @@
         <tbody>
           <tr v-for="(item, index) in pegawai" :key="index">
             <td>{{ index + 1 }}</td>
-            <td>{{ item.namaPegawai }}</td>
-            <td>{{ item.tglLahir }}</td>
-            <td>{{ item.jenisKelamin }}</td>
-            <td>{{ item.hireDate }}</td>
+            <td>{{ item.nama_pegawai }}</td>
+            <td>{{ item.tgl_lahir }}</td>
+            <td>{{ item.jenis_kelamin }}</td>
+            <td>{{ item.hire_date }}</td>
             <td>{{ item.alamat }}</td>
             <td>{{ item.gaji }}</td>
-            <td class="text-right">{{ item.noTelp }}</td>
+            <td class="text-right">{{ item.no_telp }}</td>
             <td class="action">
               <v-btn class="warning" :to="route.inputPegawai">Edit</v-btn>
             </td>
@@ -53,51 +53,24 @@
   </v-container>
 </template>
 <script>
+import Axios from 'axios'
 export default {
   data: () => ({
     route: { inputPegawai: '/input-pegawai' },
     page: 10,
     length: 15,
     totalVisible: 7,
-    pegawai: [
-      {
-        namaPegawai: 'Obi Kastanya',
-        tglLahir: '13/05/1998',
-        jenisKelamin: 'Laki Laki',
-        hireDate: '20/04/2007',
-        alamat: 'Salatiga',
-        gaji: '3000000',
-        noTelp: '08782142'
-      },
-      {
-        namaPegawai: 'Aaron Sanger',
-        tglLahir: '01/02/1999',
-        jenisKelamin: 'Laki Laki',
-        hireDate: '20/04/2006',
-        alamat: 'Salatiga',
-        gaji: '3500000',
-        noTelp: '08782142'
-      },
-      {
-        namaPegawai: 'Kevin Hartono',
-        tglLahir: '12/06/1998',
-        jenisKelamin: 'Laki Laki',
-        hireDate: '20/02/2007',
-        alamat: 'Solo',
-        gaji: '3000000',
-        noTelp: '08782144'
-      },
-      {
-        namaPegawai: 'Abed Nego Angga Kusuma',
-        tglLahir: '25/11/1998',
-        jenisKelamin: 'Laki Laki',
-        hireDate: '15/04/2008',
-        alamat: 'Magelang',
-        gaji: '3500000',
-        noTelp: '08731521'
-      }
-    ]
-  })
+    pegawai: []
+  }),
+  mounted() {
+    Axios.get('http://localhost:8003/get-pegawai')
+      .then(response => {
+        this.pegawai = response.data
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  }
 }
 </script>
 <style scoped>
