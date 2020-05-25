@@ -5,8 +5,8 @@
         <v-row>
           <v-col class="orange darken-3 mx-3 rounded" justify="end" align="right">
             <v-btn elevation="5" color="success" @click="inputData" class="mx-5">Submit</v-btn>
-            <v-btn elevation="5" color="error" class="mx-5">Clear</v-btn>
-            <v-btn elevation="5" color="primary" class="mx-5">Back</v-btn>
+            <v-btn elevation="5" color="error" class="mx-5" @click="clearData">Clear</v-btn>
+            <v-btn elevation="5" color="primary" class="mx-5" to="cek-stock">Lihat Data</v-btn>
           </v-col>
         </v-row>
         <v-row>
@@ -58,6 +58,11 @@ export default {
     }
   },
   methods: {
+    clearData: function() {
+      for (let key in this.dataInputStock) {
+        this.dataInputStock[key] = null
+      }
+    },
     inputData: function() {
       Axios.post('http://localhost:8003/input-barang', {
         nama_barang: this.dataInputStock.nama_barang,
@@ -68,10 +73,7 @@ export default {
         stock: this.dataInputStock.stock
       })
         .then(response => {
-          for (let key in this.dataInputStock) {
-            this.dataInputStock[key] = null
-          }
-          console.log(response)
+          this.clearData()
         })
         .catch(error => {
           console.log(error)

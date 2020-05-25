@@ -31,7 +31,7 @@
               <v-btn class="warning" :to="route.inputStock">Edit</v-btn>
             </td>
             <td class="action">
-              <v-btn class="error">Delete</v-btn>
+              <v-btn class="error" @click.stop="showModalDelete(item.id)">Delete</v-btn>
             </td>
             <td class="action">
               <v-btn class="info">Detail</v-btn>
@@ -40,6 +40,16 @@
         </tbody>
         <!-- </template> -->
       </v-simple-table>
+      <v-dialog v-model="dialog" max-width="500">
+        <v-card class="pa-5 mb-5">
+          <v-card-title>Hapus Barang</v-card-title>
+          <v-card-text>Apakah anda yakin akan menghapus data {{nama_barang_hapus}} dengan id {{dialogId}} ?</v-card-text>
+          <v-card-actions>
+            <v-btn class="error mx-4" @click="hapus(dialogId)">Delete</v-btn>
+            <v-btn class="warning" @click="dialog=false">Cancel</v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
       <v-pagination
         dense
         class="mt-5"
@@ -56,22 +66,48 @@
 import axios from 'axios'
 export default {
   data: () => ({
+    dialog: false,
+    nama_barang_hapus: null,
+    dialogId: null,
     route: { inputStock: '/input-stock' },
     page: 10,
     length: 15,
     totalVisible: 7,
     barang: []
   }),
-  mounted() {
-    axios
-      .get('http://localhost:8003/get-barang')
-      .then(response => {
-        this.barang = response.data
-        console.log(response.data)
-      })
-      .catch(error => {
-        console.log(error)
-      })
+  mounted: function mounted() {
+    this.getbarang()
+  },
+  methods: {
+    getbarang: function() {
+      axios
+        .get('http://localhost:8003/get-barang')
+        .then(response => {
+          this.barang = response.data
+        })
+        .catch(error => {
+          console.log(error)
+        })
+    },
+    hapus: function(id) {
+      axios
+        .delete('http://localhost:8003/delete-barang/' + id)
+        .then(response => {
+          console.log(response)
+          this.dialog = false
+          this.getbarang()
+        })
+        .catch(error => console.log(error))
+    },
+    showModalDelete: function(id) {
+      for (let item of this.barang) {
+        if (id == item.id) {
+          this.nama_barang_hapus = item.nama_barang
+        }
+      }
+      this.dialogId = id
+      this.dialog = true
+    }
   }
 }
 </script>
