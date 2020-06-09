@@ -1,3 +1,6 @@
+
+##Unfinished yet
+
 # front-end-pos-minimarket
 
 ## Project setup
